@@ -1,6 +1,6 @@
 ### Creating a simple dataset.
 
-~~~
+~~~python
 %%writefile weblogs.txt
 # Date, Time, IP, Method, URL, Status, ResponseSize
 2025-10-10,12:01:32,192.168.1.2,GET,/index.html,200,1024
@@ -22,7 +22,7 @@ Writing weblogs.txt
 
 ### Implement the Mapper
 
-~~~
+~~~python
 # Mapper: Extract (StatusCode, 1)
 def mapper(line):
     fields = line.strip().split(',')
@@ -31,11 +31,11 @@ def mapper(line):
     # TODO: extract the status code (5th or 6th field)
     status = fields[5]
     return [(status, 1)]
-    ~~~
+~~~
 
 ### Shuffle Phase
 
-~~~
+~~~python
 from collections import defaultdict
 
 def shuffle(mapped_data):
@@ -46,9 +46,9 @@ def shuffle(mapped_data):
 
 ~~~
 
-Reducer Phase
+### Reducer Phase
 
-~~~
+~~~python
 from collections import defaultdict
 
 def reducer(mapped_data):
@@ -60,7 +60,7 @@ def reducer(mapped_data):
 
 ### Combine the Phases
 
-~~~
+~~~python
 mapped = []
 with open("weblogs.txt", "r") as f:
     for line in f:
