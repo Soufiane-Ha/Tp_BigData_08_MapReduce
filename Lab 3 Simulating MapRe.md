@@ -92,4 +92,4 @@ print(result)
 ~~~5
 success → 10
 error → 10
-~~
+~~~
