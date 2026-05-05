@@ -37,7 +37,7 @@ for url, count in mapped:
     result[url] = result.get(url, 0) + count
 
 print(result)
-
+~~~
 ~~~5
 
 /index → 1
